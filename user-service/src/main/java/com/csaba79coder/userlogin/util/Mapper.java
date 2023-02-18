@@ -8,14 +8,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class Mapper {
 
-    static BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
     private static final ModelMapper modelMapper = new ModelMapper();
 
     public static User mapUserRegModelToEntity(UserRegistrationModel model) {
         User user = new User();
         user.setEmail(model.getEmail());
-        user.setPassword(passwordEncoder.encode(model.getPassword()));
+        user.setPassword(new BCryptPasswordEncoder().encode(model.getPassword()));
         return user;
     }
 
