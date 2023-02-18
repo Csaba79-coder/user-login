@@ -1,0 +1,96 @@
+openapi: 3.0.3
+info:
+  title: API First Development
+  description: API First Development
+  version: 1.0.0
+  contact:
+    email: csabavadasz79@gmail.com
+servers:
+  - url: 'http://localhost:8080'
+tags:
+  - name: user
+
+paths:
+  /users:
+    get:
+      tags:
+        - user
+      summary: Render all users
+      description: Show all users from database
+      operationId: renderAllUsers
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserModel'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Book not found
+        '405':
+          description: Validation exception
+  /users/register:
+    post:
+      tags:
+        - book
+      summary: Add a new user to the application
+      description: Add a new user to the app.
+      operationId: registerUser
+      requestBody:
+        description: Create a new book in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistrationModel'
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserModel'
+        '405':
+          description: Invalid input
+
+components:
+  schemas:
+    UserRegistrationModel:
+      type: object
+      properties:
+        email:
+          description: Email of user, who wants to register
+          type: string
+          example: 'csabavadasz79@gmail.com'
+        password:
+          description: Password of user, who wants to register
+          type: string
+          example: 'Password1234?'
+        repeatedPassword:
+          description: Password of user, who wants to register
+          type: string
+          example: 'Password1234?'
+          required:
+            - email
+            - password
+            - repeatedPassword
+    UserModel:
+      type: object
+      properties:
+        id:
+          description: Id of registered user
+          type: string
+          format: uuid
+          example: '3a8ea9f1-1a95-4caf-932f-2f988052933b'
+        email:
+          description: Email of registered user
+          type: string
+          example: 'csabavadasz79@gmail.com'
