@@ -22,7 +22,6 @@ import java.util.UUID;
 @NoArgsConstructor
 public class User {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id = UUID.randomUUID();
