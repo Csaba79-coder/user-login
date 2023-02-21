@@ -22,10 +22,7 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private final UserRepository userRepository;
-    private static final String regex = "^(?=.*[0-9])"
-            + "(?=.*[a-z])(?=.*[A-Z])"
-            + "(?=.*[@#$%^&+=])"
-            + "(?=\\S+$).{8,20}$";
+    private static final String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,32}$";
 
     public UserModel saveUser(UserRegistrationModel model) {
         Optional<User> user = userRepository.findByEmail(model.getEmail());
