@@ -53,7 +53,7 @@ public class UserControllerIT {
         // Given
         UserRegistrationModel newModel = new UserRegistrationModel()
                 .email("csabavadasz79@gmail.com")
-                .email("Geeks@portal20")
+                .password("Geeks@portal20")
                 .repeatedPassword("Geeks@portal20");
         userService.saveUser(newModel);
 
