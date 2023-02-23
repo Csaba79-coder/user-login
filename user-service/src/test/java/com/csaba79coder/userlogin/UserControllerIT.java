@@ -41,6 +41,7 @@ public class UserControllerIT {
     @MockBean
     private UserService userService;
 
+
     @BeforeEach
     void init() {
         userRepository.deleteAll();
