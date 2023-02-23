@@ -32,12 +32,15 @@ public class UserService {
             throw  new NoSuchElementException(message);
         }
         if (!Validator.patternMatches(model.getPassword(), regex)) {
-            throw new InputMismatchException();
+            String message = "Please provide a valid password";
+            throw new InputMismatchException(message);
         }
         if(!model.getPassword().equals(model.getRepeatedPassword())) {
-            throw new InputMismatchException();
+            String message = "Password and repeated password does not match";
+            throw new InputMismatchException(message);
+        } else {
+            return Mapper.mapUserEntityToUserModel(userRepository.save(Mapper.mapUserRegModelToEntity(model)));
         }
-        return Mapper.mapUserEntityToUserModel(userRepository.save(Mapper.mapUserRegModelToEntity(model)));
     }
 
     public List<UserModel> renderAllUsers() {

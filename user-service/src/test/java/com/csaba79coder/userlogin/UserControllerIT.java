@@ -48,7 +48,7 @@ public class UserControllerIT {
 
 
     @Test
-    @DisplayName("renderAllUsersWithNonEmptyResult")
+    @DisplayName("Render All Users With Non Empty Result")
     void renderAllUsersWithNonEmptyResult() throws Exception {
         // Given
         UserRegistrationModel newModel = new UserRegistrationModel()
@@ -79,7 +79,7 @@ public class UserControllerIT {
     }
 
     @Test
-    @DisplayName("RenderAllUsersWithEmptyResult")
+    @DisplayName("Render All Users With Empty Result")
     void renderAllUsersWithEmptyResult() throws Exception {
         // Given
 
